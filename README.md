@@ -55,11 +55,13 @@ df.fillna(method = 'bfill')
 df_dropped = df.dropna()
 df_dropped
 ```
-![image](https://github.com/user-attachments/assets/64cf2bbf-9b1b-4a11-828f-5da156c7b023)
+![Screenshot 2025-03-07 162039](https://github.com/user-attachments/assets/66fd3189-11b5-49d2-b6f8-147771f26260)
+
 ```
 df.fillna({'GENDER':'MALE','NAME':'SRI','ADDRESS':'POONAMALEE','M1':98,'M2':87,'M3':76,'M4':92,'TOTAL':305,'AVG':89.999999})
 ```
-![image](https://github.com/user-attachments/assets/cc0db8df-6fc5-49ec-b384-92b1ae094f24)
+![Screenshot 2025-03-07 162153](https://github.com/user-attachments/assets/abc518c7-84b7-4e6f-99d4-1d1910cf6057)
+
 
               IQR(Inter Quartile Range
 ```
@@ -73,6 +75,59 @@ ir.describe()
 ```
 ![Screenshot 2025-03-07 162801](https://github.com/user-attachments/assets/29f8482a-1590-428a-861c-939af65281eb)
 ```
+import seaborn as sns
+sns.boxplot(x='sepal_width',data=ir)
+```
+![Screenshot 2025-03-07 164643](https://github.com/user-attachments/assets/20b485cc-e23d-49e0-b366-27b8f989b4ab)
+![Screenshot 2025-03-07 165101](https://github.com/user-attachments/assets/fccaf693-98f0-44b4-9b2e-38cf29904d3f)
+
+```
+delid=ir[~((ir.sepal_width<(c1-1.5*iq))|(ir.sepal_width>(c3+1.5*iq)))]
+delid
+```
+![Screenshot 2025-03-07 165303](https://github.com/user-attachments/assets/8dda5b2c-08b8-4696-888d-4ce6c1893a8a)
+```
+import seaborn as sns
+sns.boxplot(x='sepal_width',data=delid)
+```
+![Screenshot 2025-03-07 173844](https://github.com/user-attachments/assets/7618fbd2-4de8-43cc-8584-4ddbd0a3f2dd)
+          Z-Score
+```
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import scipy.stats as stats
+dataset=pd.read_csv("heights.csv")
+dataset
+```
+![Screenshot 2025-03-07 174106](https://github.com/user-attachments/assets/34982d09-0403-4338-ad08-cf3b9856c435)
+![Screenshot 2025-03-07 174422](https://github.com/user-attachments/assets/3cdc0561-a197-48a7-97eb-c74bd3fe31fc)
+```
+df1 = df[((df['height'] >=low)& (df['height'] <=high))]
+df1
+```
+![Screenshot 2025-03-07 174628](https://github.com/user-attachments/assets/e2d47e51-2fe7-4383-a5db-50986652640e)
+```
+z = np.abs(stats.zscore(df['height']))
+z
+```
+![Screenshot 2025-03-07 174831](https://github.com/user-attachments/assets/dbd0b5f9-18d0-4b23-b616-f8fa3d8cc92c)
+```
+df1 = df[z<3]
+df1
+```
+![Screenshot 2025-03-07 175004](https://github.com/user-attachments/assets/4a21a093-0b07-402b-a3d8-da88b825508c)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -83,4 +138,4 @@ ir.describe()
 
          
 # Result
-          <<include your Result here>>
+      Thus we have cleaned the data and removed the outliers by detection using IQR and Z-score method   
