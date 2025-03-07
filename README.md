@@ -91,7 +91,8 @@ import seaborn as sns
 sns.boxplot(x='sepal_width',data=delid)
 ```
 ![Screenshot 2025-03-07 173844](https://github.com/user-attachments/assets/7618fbd2-4de8-43cc-8584-4ddbd0a3f2dd)
-          Z-Score
+
+      Z-Score
 ```
 import matplotlib.pyplot as plt
 import pandas as pd
